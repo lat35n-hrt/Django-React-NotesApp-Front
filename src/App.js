@@ -1,6 +1,5 @@
 import {
-  BrowserRouter as Router,
-  Route
+  BrowserRouter as Router, Routes, Route
 } from "react-router-dom";
 
 import './App.css';
@@ -13,8 +12,10 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Route path="/" exact component={NotesListPage} />
-        <Route path="note/:id" component={NotesListPage} />
+        <Routes>
+          <Route path="/" exact component={NotesListPage} />
+          <Route path="note/:id" component={NotesListPage} />
+        </Routes>
       </div>
     </Router>
   )
