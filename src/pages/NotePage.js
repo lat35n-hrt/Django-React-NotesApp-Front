@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 
 function NotePage() {
@@ -7,7 +7,7 @@ function NotePage() {
 
     return (
     <div>
-      <h1>Single Note {id}</h1>
+      <h1>Single Note {id} {NoteId}</h1>
     </div>
   );
 }

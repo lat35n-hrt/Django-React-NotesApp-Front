@@ -8,6 +8,9 @@ import NotesListPage from './pages/NotesListPage.js';
 import NotePage from "./pages/NotePage";
 
 function App() {
+
+  let noteId = match.params.id
+
   return (
     <Router>
       <div className="App">
