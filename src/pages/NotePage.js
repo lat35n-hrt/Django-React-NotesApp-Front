@@ -12,7 +12,7 @@ function NotePage() {
     }, []);
 
     let getNote = async ()=> {
-        let response = await fetch('/api/notes/${id}');
+        let response = await fetch(`/api/notes/${id}`);
         let data = await response.json();
         setNote(data);
     }

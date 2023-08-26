@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 const NotesListPage = () => {
 
@@ -24,10 +25,11 @@ const NotesListPage = () => {
   return (
     <div>
       <div className='notes-list'>
-      {notes.map((note, index) => (
-        <h3 key={index}>{note.body}</h3>
-      )
-        )}
+        {notes.map((note, index) => (
+          <Link key={index} to={`/note/${note.id}`}>
+            <h3>{note.body}</h3>
+          </Link>
+        ))}
       </div>
     </div>  
   )
