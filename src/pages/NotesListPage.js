@@ -32,7 +32,9 @@ const NotesListPage = () => {
       <div className='notes-list'>
         {notes.map((note, index) => (
           <Link key={index} to={`/note/${note.id}`}>
-            <h3>{note.body}</h3>
+            <div className="notes-list-item" >
+              <h3>{note.body}</h3>
+            </div>
           </Link>
         ))}
       </div>
