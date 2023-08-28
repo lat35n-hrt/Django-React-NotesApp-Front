@@ -18,9 +18,10 @@ function NotePage() {
     }
 
     return (
-    <div>
-        <p>{note?.body}</p>
+    <div className='note'>
       <h1>Single Note {id}</h1>
+      <textarea defaultValue={note?.body}></textarea>
+
     </div>
   );
 }
