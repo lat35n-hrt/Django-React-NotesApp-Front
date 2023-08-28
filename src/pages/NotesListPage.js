@@ -9,11 +9,6 @@ const NotesListPage = () => {
     getNotes()
   }, [])
 
-  // return (
-  //   <div>
-  //     notes 
-  //   </div>
-  // )
 
   let getNotes = async () => {
 

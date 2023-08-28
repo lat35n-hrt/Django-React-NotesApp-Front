@@ -11,13 +11,23 @@ function NotePage() {
 
     useEffect(()=> {
         getNote();
-    }, []);
+    }, [id]);
 
     let getNote = async ()=> {
         let response = await fetch(`/api/notes/${id}`);
         let data = await response.json();
         setNote(data);
     }
+
+    let updateNote = async () => {
+      fetch(`/api/notes/${id}/update/`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(note)
+      })
+    }  
 
     return (
     <div className='note'>
@@ -30,7 +40,7 @@ function NotePage() {
 
       </div>
       <h1>Single Note {id}</h1>
-      <textarea defaultValue={note?.body}></textarea>
+      <textarea onChange={(e) => {setNote({ ...note, 'body': e.target.value})}} defaultValue={note?.body}></textarea>
 
     </div>
   );
