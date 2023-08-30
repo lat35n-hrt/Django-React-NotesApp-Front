@@ -13,9 +13,19 @@ const NotePage = () => {
   }, [id]);
 
     let getNote = async ()=> {
+      try {
         let response = await fetch(`/api/notes/${id}`);
-        let data = await response.json();
-        setNote(data);
+        if (response.ok) {
+          let data = await response.json();
+          setNote(data);
+        } else {
+          console.error("Error fetching note");
+        }
+      } catch (error) {
+        console.error("Error fetching note", error);
+      }
+
+
     }
 
     let updateNote = async () => {
