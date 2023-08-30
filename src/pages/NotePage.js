@@ -14,9 +14,10 @@ const NotePage = () => {
 
     let getNote = async ()=> {
       try {
-        let response = await fetch(`/api/notes/${id}`);
+        let response = await fetch(`http://localhost:8000/api/notes/${id}`);
         if (response.ok) {
           let data = await response.json();
+          console.log("Fetched note data:", data);
           setNote(data);
         } else {
           console.error("Error fetching note");
@@ -24,12 +25,10 @@ const NotePage = () => {
       } catch (error) {
         console.error("Error fetching note", error);
       }
-
-
     }
 
     let updateNote = async () => {
-      fetch(`/api/notes/${id}/update/`, {
+      fetch(`http://localhost:8000/api/notes/${id}/update/`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
