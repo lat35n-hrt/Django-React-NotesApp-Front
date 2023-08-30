@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
 
 const NotePage = () => {
-    // Get the value of the dynamic parameter "id" from the URL
     const { id } = useParams();
     const navigate = useNavigate();
 
