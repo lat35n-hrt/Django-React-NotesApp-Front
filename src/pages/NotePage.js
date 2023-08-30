@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
 
 const NotePage = () => {
@@ -8,11 +7,11 @@ const NotePage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    let [note, setNote] = useState(null);
+    const [note, setNote] = useState(null);
 
     useEffect(()=> {
-        getNote();
-    }, [id]);
+      getNote();
+  }, [id]);
 
     let getNote = async ()=> {
         let response = await fetch(`/api/notes/${id}`);
@@ -28,7 +27,7 @@ const NotePage = () => {
         },
         body: JSON.stringify(note)
       })
-    }  
+    }   
 
 
     const handleSubmit = ()=> {
@@ -45,8 +44,7 @@ const NotePage = () => {
 
       </div>
       <h1>Single Note {id}</h1>
-      <textarea onChange={(e) => {setNote({ ...note, 'body': e.target.value})}} defaultValue={note?.body}></textarea>
-
+       <textarea onChange={(e) => {setNote({ ...note, 'body': e.target.value})}} defaultValue={note?.body}></textarea>
     </div>
   );
 }
