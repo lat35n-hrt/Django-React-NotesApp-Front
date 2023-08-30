@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
 
-function NotePage() {
+const NotePage = () => {
     // Get the value of the dynamic parameter "id" from the URL
     const { id } = useParams();
+    const navigate = useNavigate();
 
     let [note, setNote] = useState(null);
 
@@ -29,13 +30,17 @@ function NotePage() {
       })
     }  
 
+
+    const handleSubmit = ()=> {
+      updateNote()
+      navigate('/')
+    }
+
     return (
     <div className='note'>
       <div className='note-header'>
         <h3>
-          <Link to="/">
-            <ArrowLeft />
-          </Link>
+          <ArrowLeft onClick={handleSubmit}/>
         </h3>
 
       </div>
