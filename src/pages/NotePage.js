@@ -28,13 +28,24 @@ const NotePage = () => {
     }
 
     let updateNote = async () => {
-      fetch(`http://localhost:8000/api/notes/${id}/update/`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(note)
-      })
+      try {
+        let response = await fetch(`http://localhost:8000/api/notes/${id}/update`, {
+          method: "PUT",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(note)
+        })
+
+        if (response.ok) {
+          console.log("Note updated successfully");
+        } else {
+          console.error("Error updating note");
+        }
+
+      } catch (error) {
+        console.error("Error updating note", error);
+      }
     }   
 
 
@@ -52,7 +63,10 @@ const NotePage = () => {
 
       </div>
       <h1>Single Note {id}</h1>
-       <textarea onChange={(e) => {setNote({ ...note, 'body': e.target.value})}} defaultValue={note?.body}></textarea>
+       <textarea 
+        defaultValue={note?.body}
+        onChange={(e) => {setNote({ ...note, 'body': e.target.value})}} 
+       ></textarea>
     </div>
   );
 }
