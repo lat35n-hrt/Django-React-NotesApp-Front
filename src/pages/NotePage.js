@@ -13,6 +13,8 @@ const NotePage = () => {
   }, [id]);
 
     let getNote = async ()=> {
+      if (id === 'new') return
+
       try {
         let response = await fetch(`http://localhost:8000/api/notes/${id}`);
         if (response.ok) {
@@ -48,6 +50,28 @@ const NotePage = () => {
       }
     }   
 
+    
+    let createNote = async () => {
+      try {
+        let response = await fetch(`http://localhost:8000/api/notes/${id}/create`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(note)
+        })
+
+        if (response.ok) {
+          console.log("Note created successfully");
+        } else {
+          console.error("Error creating note");
+        }
+
+      } catch (error) {
+        console.error("Error creating note", error);
+      }
+    } 
+
 
     let deleteNote = async () => {
       try {
@@ -70,10 +94,14 @@ const NotePage = () => {
       }
     }  
 
-
-
     const handleSubmit = ()=> {
-      updateNote()
+      if (id !== 'new' && !note.body) {
+        deleteNote()
+      } else if (id !== 'new'){
+        updateNote()
+      } else if (id == 'new' && note !== null){
+        createNote()
+      }
       navigate('/')
     }
 
