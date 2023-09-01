@@ -101,7 +101,9 @@ const NotePage = () => {
       } else if (id === 'new' && note !== null){
         createNote()
       }
-      navigate('/')
+
+      navigate('/');
+
     }
 
     return (
@@ -118,7 +120,7 @@ const NotePage = () => {
       </div>
       <h1>Single Note {id}</h1>
        <textarea 
-        defaultValue={note?.body}
+        value={note?.body}
         onChange={(e) => {
             setNote({ ...note, 'body': e.target.value})}} 
        ></textarea>
