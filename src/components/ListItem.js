@@ -15,13 +15,26 @@ let getTitle = (note) => {
     return title
 }
 
+let getContent = (note) => {
+    let title = getTitle(note)
+    let content = note.body.replaceAll('\n', ' ')
+    content = content.replaceAll(title, '')
+
+    if (content.length > 45) {
+        return content.slice(0, 45) + '...'
+    } else {
+        return content
+    }
+}
+
+
 const ListItem = ({ note }) => {
     return (
         <Link to={`/note/${note.id}`}>
             <div className="notes-list-item" >
                 <h3>TEST</h3>
                 <h3>{getTitle(note)}</h3>
-                <p><span>{getTime(note)}</span></p>
+                <p><span>{getTime(note)}</span>{getContent(note)}</p>
             </div>
         </Link>
     )
