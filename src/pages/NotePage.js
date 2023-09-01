@@ -53,7 +53,7 @@ const NotePage = () => {
     
     let createNote = async () => {
       try {
-        let response = await fetch(`http://localhost:8000/api/notes/${id}/create`, {
+        let response = await fetch(`http://localhost:8000/api/notes/create`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ const NotePage = () => {
         {id !== 'new' ?(
           <button onClick={deleteNote}>Delete</button>
         ) : (
-          <button >Done</button>
+          <button onClick={handleSubmit}>Done</button>
         )}
       </div>
       <h1>Single Note {id}</h1>
