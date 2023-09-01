@@ -83,7 +83,11 @@ const NotePage = () => {
         <h3>
           <ArrowLeft onClick={handleSubmit}/>
         </h3>
-        <button onClick={deleteNote}>Delete</button>
+        {id !== 'new' ?(
+          <button onClick={deleteNote}>Delete</button>
+        ) : (
+          <button >Done</button>
+        )}
       </div>
       <h1>Single Note {id}</h1>
        <textarea 
