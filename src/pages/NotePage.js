@@ -81,7 +81,6 @@ const NotePage = () => {
             'Content-Type': 'application/json'
           },
         })
-        navigate('/')
 
         if (response.ok) {
           console.log("Note updated successfully");
@@ -120,7 +119,8 @@ const NotePage = () => {
       <h1>Single Note {id}</h1>
        <textarea 
         defaultValue={note?.body}
-        onChange={(e) => {setNote({ ...note, 'body': e.target.value})}} 
+        onChange={(e) => {
+            setNote({ ...note, 'body': e.target.value})}} 
        ></textarea>
     </div>
   );
