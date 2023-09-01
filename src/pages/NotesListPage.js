@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AddButton from '../components/AddButton'
+import ListItem from '../components/ListItem'
 
 const NotesListPage = () => {
 
@@ -27,11 +28,7 @@ const NotesListPage = () => {
 
       <div className='notes-list'>
         {notes.map((note, index) => (
-          <Link key={index} to={`/note/${note.id}`}>
-            <div className="notes-list-item" >
-              <h3>{note.body}</h3>
-            </div>
-          </Link>
+          <ListItem key={index} note={note} />
         ))}
       </div>
       <AddButton />
