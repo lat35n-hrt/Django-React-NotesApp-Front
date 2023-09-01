@@ -49,6 +49,29 @@ const NotePage = () => {
     }   
 
 
+    let deleteNote = async () => {
+      try {
+        let response = await fetch(`http://localhost:8000/api/notes/${id}/delete`, {
+          method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+        navigate('/')
+
+        if (response.ok) {
+          console.log("Note updated successfully");
+        } else {
+          console.error("Error updating note");
+        }
+
+      } catch (error) {
+        console.error("Error updating note", error);
+      }
+    }  
+
+
+
     const handleSubmit = ()=> {
       updateNote()
       navigate('/')
@@ -59,6 +82,7 @@ const NotePage = () => {
       <div className='note-header'>
         <h3>
           <ArrowLeft onClick={handleSubmit}/>
+          <button onClick={deleteNote}>Delete</button>
         </h3>
 
       </div>
