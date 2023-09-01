@@ -1,6 +1,11 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
+let getTime = (note) => {
+    return new Date(note.updated).toLocaleDateString()
+}
+
+
 let getTitle = (note) => {
     
     let title = note.body.split('\n')[0]
@@ -16,7 +21,7 @@ const ListItem = ({ note }) => {
             <div className="notes-list-item" >
                 <h3>TEST</h3>
                 <h3>{getTitle(note)}</h3>
-                <p><span>{note.updated}</span></p>
+                <p><span>{getTime(note)}</span></p>
             </div>
         </Link>
     )
