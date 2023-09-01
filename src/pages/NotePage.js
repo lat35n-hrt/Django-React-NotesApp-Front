@@ -82,9 +82,8 @@ const NotePage = () => {
       <div className='note-header'>
         <h3>
           <ArrowLeft onClick={handleSubmit}/>
-          <button onClick={deleteNote}>Delete</button>
         </h3>
-
+        <button onClick={deleteNote}>Delete</button>
       </div>
       <h1>Single Note {id}</h1>
        <textarea 
